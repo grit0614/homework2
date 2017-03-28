@@ -1,0 +1,152 @@
+/*css snippets*/
+
+@import url('https://fonts.googleapis.com/css?family=Abel');
+
+/*일반적인 device들 pixel size에 따른 media query 조절*/
+/*모바일 : width <= 600px*/
+/*태블릿 : 600 < width <= 991px*/
+/*데스크탑: 992 < width <= 1200px*/
+/*대형화면: 1200 < width*/
+
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	padding: 0 10%;
+	font-family: 'Abel', sans-serif;
+}
+
+.navbar {
+  background-color: white;
+  border-bottom: 1px solid lightgray;
+  height: 64px;
+  line-height: 64px;                                          /*현재 header이 40px인데 글자 높이도 40px로 맞추면 세로로 가운데로 정렬된다.*/
+}
+
+.navbar a { text-decoration: none; }
+
+.logo {
+	/*position: absolute;*/
+	padding-top: 13px;
+}
+
+.top-nav {
+	float: right; 
+	margin-right: 80px;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+}
+
+.top-nav li {
+  display: inline-block;
+  padding: 0 15px;
+}
+
+.top-nav li a {
+  color: #88AAA9!important;
+  font-size: 0.8em;
+}
+
+.top-nav li a:last-child {
+  color: blue;
+}
+
+.top-nav li:hover {
+  -moz-transition: all .3s ease-in;
+  -o-transition: all .3s ease-in;
+  -webkit-transition: all .3s ease-in;
+  transition: all .3s ease-in;
+  background-color: #bdb1ad; 
+}
+
+.top-nav li:hover a {
+	color: #ffffff!important;
+}
+
+.brand-logo {
+  color: #846C63 !important;
+  text-transform: uppercase;
+  display: inline-block;
+  vertical-align: super;
+  font-size: 2.1rem;
+  line-height: 64px;
+}
+
+/*body*/
+.container{
+	font-size: 0.8em;
+	color: #846C63!important;
+	text-transform: uppercase;
+	padding-top: 20px;	
+}
+
+.container div div {
+	align-self: center;
+	text-align: center;
+	left: 0;
+	right: 0;
+	position: relative;
+}
+
+.content {
+	display: inline-block;
+	border: 1px solid lightgray;
+	margin: 5px;
+}
+
+/*모바일*/
+@media screen and (max-width: 600px) {
+  .content {
+  	width: 46%;
+  	height: 125px;
+  }
+}
+
+/*태블릿*/
+@media screen and (min-width: 600px) and (max-width: 991px) {
+  .content {
+  	width: 30%;
+  	height: 150px;
+  }
+}
+
+/*데스크탑*/
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .content {
+  	width: 23%;
+  	height: 50px;
+  	height: 175px;
+  }  
+}
+
+/*대형화면*/
+@media screen and (min-width: 1200px) {
+  .content {
+  	width: 23%;
+  	height: 50px;
+  	height: 200px;
+  }  
+}
+
+/*footer*/
+.container ~ div {
+	margin: auto;
+	text-align: center;
+}
+
+.footer {
+  padding: 10px 0;
+  background-color: #bdb1ad;
+}
+
+/*circle*/
+.circle {
+  background: lightblue;
+  bottom: 15px;
+  right: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: fixed;
+}
