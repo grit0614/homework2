@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS Basic</title>
+</head>
+<body>
+	<script>
+		// 
+		// 실습 #1
+		// 
+		var a = 10;
+		console.log("a : " + a);
+		console.log("typeof a : " + typeof a);
+
+		var b = "0100";
+		console.log("b : " + b);
+		console.log("typeof b : " + typeof b);
+
+		// string -> number
+		console.log("parseInt(b) : " + parseInt(b));
+		// string -> binary
+		console.log("parseInt(b, 2) : " + parseInt(b, 2));
+		// string can be accessed with array index
+		// b.charAt(1) == b[1]
+		console.log("b[2] : " + b[1]);
+		console.log("b.length : " + b.length);
+		
+
+		// 
+		// 실습 #2
+		// 
+
+		// null: 값이 없음(object형)
+		// undefined: 값이 할당되지 않음
+		var e;
+		console.log("e : " + e);																			// undefined
+		console.log("typeof e : " + typeof e);												// undefined
+
+		console.log("e == undefined : " + (e == undefined));					// true
+
+		console.log("e == null : " + (e == null));										// true
+
+		console.log("null == undefined : " + (null == undefined));		// true
+
+		console.log("typeof f : " + typeof f);												// undefined
+
+		// 스크립트언어의 특징
+		// error가 나면 실행을 중단(f is not defined)
+		// console.log("f == undefined : " + (f == undefined));
+
+		e = "hello world";
+		console.log("e : " + e);																			// hello world
+		console.log("typeof e : " + typeof e);												// string
+
+		e = null
+		console.log("e : " + e);																			// null
+		console.log("typeof e : " + typeof e);												// object
+
+		// 
+		// 실습 #3
+		// 
+
+		// 사전에 컴파일되어서 프로그램이 끝날때까지 있음
+		function foo1() {
+			console.log("hello");
+		}
+
+		// 런타임으로 컴파일되어서(호출할때마다 컴파일) 필요할 때에 호출/삭제
+		var foo2 = function() {
+			console.log("world");
+		}
+
+		// function **foo()**는 함수 내에서만 쓸 수 있는 지역변수
+		var foo3 = function foo() {
+			console.log("!");
+			// foo();
+			// 위에 foo(); 주석처리 제거하면 재귀함수 -> 무한루프
+		}
+
+		// 일반적으로 선언하는 함수는 불러줘야 작동함
+		foo1();
+		foo2();
+
+		// (function() {} () ); 꼴로 ()로 감싸서 호출하면 선언되자마자 호출
+		// foo1(), foo2()는 호출해야 나왔는데, 얘는 바로 튀어나옴
+		(function() {
+			console.log("~");
+		}());
+
+		foo3();
+		// foo()는 foo3 내에서만 사용되는 지역변수라 못찾음
+		// foo();
+
+		// 줄바꿈
+		(function() {
+			console.log("=======================================");
+		}());
+
+
+		// callback function
+		// 특정 이벤트시점에 호출되어야 하는 변수
+		// "끝나면 나한테 알려줘"에 대한 결과로 수행해야 할 함수를 지정
+
+		// helloworld가 끝나면 callback함수 호출
+		// 익명의 함수를 파라메터로 사용해서 특정 함수 내부에서 콜백함수가 동작
+		function helloworld (callback) {
+			console.log("hello world");
+			callback();
+		}
+
+		var callback = function() {
+			console.log("!!!");
+		}
+
+		helloworld(callback);
+
+
+		// 줄바꿈
+		(function() {
+			console.log("=======================================");
+		}());
+
+
+		// callback function 예시
+		var allUserData = []; 
+
+		// 콘솔에 결과를 찍는 함수 
+		function logStuff (userData) { 
+			if ( typeof userData === "string") { 
+				console.log(userData); 
+			} 
+
+			else if ( typeof userData === "object") { 
+				for (var item in userData) { 
+					console.log(item + ": " + userData[item]); 
+				} 
+			} 
+		} 
+
+		// 두 개의 인자를 받아서 마지막에 콜백함수를 호출한다. 
+		function getInput (options, callback) { 
+			allUserData.push (options); 
+			callback (options); 
+		} 
+
+		// getInput 함수를 호출할 때 , 우리는 logStuf이라는 함수의 이름을 인자로 넘긴다. 
+		// 그래서 logStuff 은 콜백함수가 되어 getInput이라는 함수의 내부에서 동작을 할것이다. 
+		getInput ({name:"Rich", speciality:"JavaScript"}, logStuff); 
+		// name: Rich // speciality: JavaScript
+
+
+		// 줄바꿈
+		(function() {
+			console.log("=======================================");
+		}());
+
+
+		// 
+		// 실습 #4
+		// Object 선언
+
+		// 방식 1
+		var car = {};
+		var car = new Object();
+		car.name = "Fiat";
+		car.model = 500;
+		car.weight = "850kg";
+		car.color = "white";
+		car.start = function() {};
+		car.drive = function() {};
+		car.brake = function() {};
+		car.stop = function() {};
+		console.log(car["weight"]);
+
+		// 방식 2
+		var car = {
+			name : "Fiat",
+			model : 500,
+			weight : "850kg",
+			color : "white",
+			start : function() {},
+			drive : function() {},
+			brake : function() {},
+			stop : function() {}
+		}
+		console.log(car.name);
+	</script>
+</body>
+</html>
